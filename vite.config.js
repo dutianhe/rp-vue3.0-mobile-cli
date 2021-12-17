@@ -5,46 +5,60 @@
  * @param
  * @return
  */
-import { defineConfig ,loadEnv} from 'vite'
+import {defineConfig, loadEnv} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import * as path from 'path';
 import rollupPluginGenerate from "ruubypay-rollup-plugin-generate-deployment-config"
 import pak from "./package.json"
+
 const envResolve = (mode, env) => loadEnv(mode, process.cwd())[env];
 
-export default ({command,mode}) => {
-  let options = {
-    plugins: [vue(),rollupPluginGenerate({
-      env: mode,
-      projectName: pak.name,
-      outDir:envResolve(mode,"VITE_APP_OUTPUTDIR")
-    })],
-    base:envResolve(mode,"VITE_APP_BASEURL"),
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, './src')
-      }
-    },
-    server:{
-      host:'0.0.0.0'
+export default ({command, mode}) => {
+    let base = "";
+    switch (mode) {
+        case "debug":
+            base = "//static-cs.ruubypay.com";
+            break;
+        case "test":
+            base = "//static-ft.ruubypay.com"
+            break;
+        case "release":
+            base = "//static.ruubypay.com"
+            break;
     }
-  }
-  if(command != 'serve'){
-    options = {
-      ...options,
-      build:{
-        outDir:envResolve(mode,"VITE_APP_OUTPUTDIR"),
-        assetsDir:'static',
-        cssCodeSplit:true,
-        rollupOptions:{
-          output:{
-            chunkFileNames:"static/js/[name].[hash].js",
-            entryFileNames:"static/js/[name].[hash].js",
-            assetFileNames:"static/[ext]/[name].[hash].[ext]",
-          }
+
+    let options = {
+        plugins: [vue(), rollupPluginGenerate({
+            env: mode,
+            projectName: pak.name,
+            outDir: `target/${mode}/${pak.name}`
+        })],
+        base: `${base}/${pak.name}`,
+        resolve: {
+            alias: {
+                '@': path.resolve(__dirname, './src')
+            }
+        },
+        server: {
+            host: '0.0.0.0'
         }
-      }
     }
-  }
-  return defineConfig(options)
+    if (command != 'serve') {
+        options = {
+            ...options,
+            build: {
+                outDir: `target/${mode}/${pak.name}`,
+                assetsDir: 'static',
+                cssCodeSplit: true,
+                rollupOptions: {
+                    output: {
+                        chunkFileNames: "static/js/[name].[hash].js",
+                        entryFileNames: "static/js/[name].[hash].js",
+                        assetFileNames: "static/[ext]/[name].[hash].[ext]",
+                    }
+                }
+            }
+        }
+    }
+    return defineConfig(options)
 }
