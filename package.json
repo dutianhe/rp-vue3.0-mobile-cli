@@ -1,0 +1,31 @@
+{
+  "name": "rp-vue3.0-mobile-cli",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build:debug": "vite build --mode debug",
+    "build:test": "vite build --mode test",
+    "build:release": "vite build --mode release",
+    "push:dev": "npm run build:debug && node push.dev.js",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "compare-versions": "^4.1.2",
+    "rpjssdk": "^1.0.24",
+    "sa-sdk-javascript": "^1.19.14",
+    "vconsole": "^3.9.5",
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.0",
+    "amfe-flexible": "^2.2.1",
+    "auto-deployment-web": "^1.0.5",
+    "autoprefixer": "^10.4.0",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
+    "postcss-pxtorem": "^6.0.0",
+    "ruubypay-rollup-plugin-generate-deployment-config": "^1.0.5",
+    "vite": "^2.7.1"
+  }
+}
