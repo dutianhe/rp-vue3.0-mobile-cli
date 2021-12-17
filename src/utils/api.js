@@ -5,5 +5,5 @@
 * @return Object
 * */
 export const API = {
-  medicalInfo: `${import.meta.env.VITE_APP_BASE_API}/markting_activity/medical/info`,//医保关联查询用户状态
+  demoAPI: `${import.meta.env.VITE_APP_BASE_API}/markting_activity/medical/info`,//DEMO
 }

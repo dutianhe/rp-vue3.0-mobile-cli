@@ -6,11 +6,32 @@ export default {
     /**
      * DEMO 示例
      * */
-    medicalInfo: async (data) => {
+    demoRequest: async (data) => {
+        try {
+            showLoading();
+            let res = await axiosRequest({
+                url: API.demoAPI,
+                data: {
+                    ...data
+                },
+            });
+            hideLoading();
+            return res;
+        } catch (e) {
+            hideLoading();
+            console.log(e)
+            return {};
+        }
+    },
+
+    /**
+     * DEMO rpjssdk 示例
+     * */
+    demoRPRequest: async (data) => {
         try {
             showLoading();
             let res = await rpRequest({
-                url: API.medicalInfo,
+                url: API.demoAPI,
                 data: {
                     ...data
                 },

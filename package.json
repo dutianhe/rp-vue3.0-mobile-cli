@@ -2,16 +2,16 @@
   "name": "rp-vue3.0-mobile-cli",
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build:debug": "vite build --mode debug",
     "build:test": "vite build --mode test",
     "build:release": "vite build --mode release",
-    "push:dev": "npm run build:debug && node push.dev.js",
-    "preview": "vite preview"
+    "push:dev": "npm run build:debug && node push.dev.js"
   },
   "dependencies": {
     "axios": "^0.24.0",
     "compare-versions": "^4.1.2",
+    "require": "^2.4.20",
     "rpjssdk": "^1.0.24",
     "sa-sdk-javascript": "^1.19.14",
     "vconsole": "^3.9.5",
