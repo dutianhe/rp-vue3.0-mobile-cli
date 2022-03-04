@@ -26,7 +26,7 @@
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
     "postcss-pxtorem": "^6.0.0",
-    "ruubypay-rollup-plugin-generate-deployment-config": "^1.0.5",
+    "ruubypay-rollup-plugin-generate-deployment-config": "^1.0.6",
     "vite": "^2.7.1"
   }
 }
