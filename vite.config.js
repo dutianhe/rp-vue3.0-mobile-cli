@@ -10,7 +10,7 @@ import vue from '@vitejs/plugin-vue'
 import * as path from 'path';
 import rollupPluginGenerate from "ruubypay-rollup-plugin-generate-deployment-config"
 import pak from "./package.json"
-
+import legacy from '@vitejs/plugin-legacy'
 const envResolve = (mode, env) => loadEnv(mode, process.cwd())[env];
 
 export default ({command, mode}) => {
@@ -32,6 +32,9 @@ export default ({command, mode}) => {
             env: mode,
             projectName: pak.name,
             outDir: `target/${mode}/${pak.name}`
+        }),legacy({
+            targets: ['> 1%, last 1 version, ie >= 11'],
+            additionalLegacyPolyfills: ['regenerator-runtime/runtime'], // 面向IE11时需要此插件
         })],
         base: `${base}/${pak.name}`,
         resolve: {

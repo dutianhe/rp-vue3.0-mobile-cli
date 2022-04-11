@@ -19,6 +19,7 @@
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
+    "@vitejs/plugin-legacy": "^1.8.0",
     "@vitejs/plugin-vue": "^2.0.0",
     "amfe-flexible": "^2.2.1",
     "auto-deployment-web": "^1.0.5",
