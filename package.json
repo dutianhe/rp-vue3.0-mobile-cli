@@ -1,6 +1,6 @@
 {
   "name": "rp-vue3.0-mobile-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "start": "vite",
     "build:debug": "vite build --mode debug",

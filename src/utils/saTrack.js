@@ -14,6 +14,6 @@ sa.init({
     use_app_track: true,
     show_log: false
 });
-
+sa.quick('autoTrack');
 
 export default sa;
