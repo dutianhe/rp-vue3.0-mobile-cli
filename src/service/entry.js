@@ -1,4 +1,4 @@
-import home from "./Home"
+import home from "./home"
 
 export default {
     request: {
